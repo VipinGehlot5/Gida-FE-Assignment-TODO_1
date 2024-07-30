@@ -1,0 +1,69 @@
+<!-- src/app/components/todo/todo.component.html -->
+
+<div class="container">
+    <div>
+        <img src="../../../assets/todo-assets/Frame 27.jpg" alt="">
+    </div>
+    <main>
+        <section class="intro">
+            <h1>Hello,</h1>
+            <p>Get started by creating your first checklist.</p>
+
+            <div class="todo-container">
+                <section class="todo-list" *ngIf="showCustomTodo">
+                    <h2>Design System</h2>
+                    <hr>
+                    <ul>
+                        <li *ngFor="let todo of todos; let i= index;">
+                            <input type="checkbox" [checked]="todo.completed" (change)="toggleTodoCompletion(todo)">
+                            <label [for]="'task' + todo.id">{{ todo.title }}</label>
+                            <button class="delete-btn" (click)="deleteTodo(todo)">🗑️</button>
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Title..." [(ngModel)]="newTodoTitle" class="add-task-input">
+                            <button class="add-btn" (click)="addTodo()">+ Add Task</button>
+                        </li>
+                    </ul>
+                    <div class="footer">
+                        <span>👁️ Completed {{ completedTodos.length }} of {{ todos.length }}</span>
+
+                    </div>
+                </section>
+
+                <!-- <button *ngIf="!showCustomTodo" class="add-btn" style="margin-top: 25px;"
+                (click)="toggleCustomTodoVisibility()">Add more
+                Todo</button> -->
+
+                <!-- New Section for Custom To-Dos -->
+                <!-- <section class="todo-list" *ngIf="showCustomTodo">
+                <h2>Custom To-Dos</h2>
+                <ul>
+                    <li *ngFor="let customTodo of customTodos">
+                        <input type="checkbox" [checked]="customTodo.completed"
+                            (change)="toggleCustomTodoCompletion(customTodo)">
+                        <label [for]="'customTask' + customTodo.id">{{ customTodo.title }}</label>
+                        <button class="delete-btn" (click)="deleteCustomTodo(customTodo)">🗑️</button>
+                    </li>
+                    <li>
+                        <input type="text" placeholder="Title..." [(ngModel)]="newCustomTodoTitle"
+                            class="add-task-input">
+                        <button class="add-btn" (click)="addCustomTodo()">+ Add Custom Task</button>
+                    </li>
+                </ul>
+                <div class="footer">
+                    <span>👁️ Completed {{ completedCustomTodos.length }} of {{ customTodos.length }}</span>
+                </div>
+            </section> -->
+
+
+                <div class="signup-container">
+                    <p style="color: #7E7E7E;">Sign up to unlock recurring tasks, publishing, collaborating and more.
+                    </p>
+                    <button class="signup-btn">Sign up</button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
